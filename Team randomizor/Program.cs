@@ -18,12 +18,12 @@ try
 
             Student st = new Student(student);
             allStudents.Add(st);
-        }
+        }s
     }
 }
 catch (Exception)
 {
-    Console.WriteLine("An error occured during reading the file provided");
+    Console.WriteLine("An error occured while reading the file provided");
 }
 
 TeamGenerator TG = new TeamGenerator(allStudents);
