@@ -18,7 +18,7 @@ try
 
             Student st = new Student(student);
             allStudents.Add(st);
-        }s
+        }
     }
 }
 catch (Exception)
