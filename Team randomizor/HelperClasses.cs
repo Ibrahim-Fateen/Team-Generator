@@ -4,34 +4,35 @@ namespace Team_randomizor
     {
         private string name;
         private int id;
-        private int[] preference; // ids of students to include in the team
-        private int[] unwanted; // ids of all students to not include in the team
+        private List<int> preference = new List<int>(); // ids of students to include in the team
+        private List<int> unwanted= new List<int>(); // ids of all students to not include in the team
 
         public Student() { }
 
         public Student(string[] line)
         {
-            // use data from excel to generate an instance of student
-            // condition array is to be populated with all id's of students this pupil can't work with
+            // use data from csv to generate an instance of student
+            id = int.Parse(line[3]);
+            name = line[1];
         }
         
         
-        public string valName
+        public string ValName
         {
             get { return name; }
         }
 
-        public int valId
+        public int ValId
         {
             get { return id; }
         }
 
-        public int[] valPreference
+        public List<int> ValPreference
         {
             get { return preference; }
         }
 
-        public int[] valUnwanted
+        public List<int> ValUnwanted
         {
             get { return unwanted; }
         }
@@ -63,7 +64,8 @@ namespace Team_randomizor
                     foreach (var std in team)
                     {
                         // ********************************************
-                        if (availableStudents[random] == 0) available = false;
+                        if (availableStudents[random].ValUnwanted.Contains(std.ValId)) available = false;
+                        if (std.ValUnwanted.Contains(availableStudents[random].ValId)) available = false;
                     }
 
                     if (available)
